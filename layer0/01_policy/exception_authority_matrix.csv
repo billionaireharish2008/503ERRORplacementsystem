@@ -1,0 +1,8 @@
+exception_id,exception_type,related_rules,may_request,reviews,final_approver,evidence_required,audit_fields
+EX-01,Approved absence (emergency),"ATT-01, ATT-02",Student; Course Coordinator,Placement Officer,TBD - policy owner to name,TBD (e.g. document),"actor, time, reason, decision, rule_id, policy_version"
+EX-02,Package category switch,PKG-01..03,Student via Placement Officer,Placement Officer,TBD,Offer letter,same
+EX-03,Additional offer beyond offer-type limit,OFR-01,Student via Placement Officer,Placement Officer,TBD,Offer letter,same
+EX-04,Late acceptance / extended deadline,ACC-01,Student; Recruiter,Placement Officer,TBD,Written request,same
+EX-05,Deregistration waiver / re-registration,DRG-01,Student,Placement Officer,TBD,Written request,same
+EX-06,NOC waiver or special handling,NOC-01,Student,Placement Officer,TBD,TBD,same
+EX-07,Eligibility override for a specific drive,"REG-01, ELG-01..02",Placement Officer,TBD,TBD,Reason in writing,same
