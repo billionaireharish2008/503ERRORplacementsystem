@@ -1,0 +1,18 @@
+field,source,classification,who_may_view,why_collected,export_default,retention,status
+placement_id,problem statement 3.1,internal,All authenticated staff in scope,Unique record key,yes,Decide (see retention_notes),NEEDS_DECISION
+student_name,problem statement 3.1,confidential personal,Staff in programme scope,Identify student,yes (minimum),Decide,NEEDS_DECISION
+mobile_number,problem statement 3.1,confidential personal,Role-restricted: Placement Officer/Admin only; recruiter only if approved,Contact,NO (explicit permission + audit),Decide,NEEDS_DECISION
+email_id,problem statement 3.1,confidential personal,Role-restricted as mobile,Contact,NO (explicit permission + audit),Decide,NEEDS_DECISION
+programme / batch,proposed (dev plan),internal,Staff in scope,Scoping and statistics,yes,Decide,NEEDS_DECISION
+registration_status,proposed (dev plan),internal,Staff in scope,Eligibility,yes,Decide,NEEDS_DECISION
+current_placement_status (summary),problem statement 3.1 (placement status),restricted placement/compensation,Officer/Admin; coordinator in scope,"Eligibility, statistics",restricted,Decide,NEEDS_DECISION
+"offer.company / role / type (I,F,I+F,PPO)",proposed (dev plan),restricted placement/compensation,Officer/Admin; recruiter: own drive only,Policy checks,restricted,Decide,NEEDS_DECISION
+offer.internship_stipend + period,proposed (dev plan),restricted placement/compensation,Officer/Admin,Reporting (kept separate from CTC),NO,Decide,NEEDS_DECISION
+offer.fte_ctc_annual,proposed (dev plan),restricted placement/compensation,Officer/Admin,Policy and statistics,NO,Decide,NEEDS_DECISION
+offer status history,problem statement 3.1 (preserve history),restricted placement/compensation,Officer/Admin,Traceability,NO,Never overwrite,NEEDS_DECISION
+drive participation / attendance,proposed (dev plan),confidential personal,"Officer, coordinator in scope, recruiter own drive",Policy checks,restricted,Decide,NEEDS_DECISION
+exception requests + decisions,proposed (dev plan),confidential personal,Officer/Admin and authorised approver,Accountability,NO,Decide,NEEDS_DECISION
+policy_version + decision log,proposed (dev plan),internal,Officer/Admin,Reproducible decisions,NO,Keep with offers,NEEDS_DECISION
+audit events,proposed (dev plan),restricted,Admin / security reviewer only,Accountability,NO,Decide,NEEDS_DECISION
+user accounts (password HASH only),proposed (dev plan),restricted,Admin,Authentication,NO,Until access removed,NEEDS_DECISION
+aggregate dashboard statistics,proposed (dev plan),internal (public only after approval),Authorised roles in scope,Reporting,yes,n/a,NEEDS_DECISION
