@@ -1,0 +1,15 @@
+# pip install pre-commit && pre-commit install
+repos:
+  - repo: local
+    hooks:
+      - id: secret-scan
+        name: secret scan (staged changes)
+        entry: python -m ops.secret_scan --staged
+        language: system
+        pass_filenames: false
+      - id: dep-pinning
+        name: requirements pinned
+        entry: python -m ops.dep_check --skip-tools
+        language: system
+        files: ^requirements.*\.txt$
+        pass_filenames: false
