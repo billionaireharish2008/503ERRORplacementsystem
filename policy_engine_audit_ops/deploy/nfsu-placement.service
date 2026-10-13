@@ -1,0 +1,37 @@
+# systemd unit: least-privilege service account, read-only filesystem, no new privileges.
+[Unit]
+Description=NFSU Placement System (gunicorn)
+After=network.target postgresql.service
+
+[Service]
+User=nfsu
+Group=nfsu
+WorkingDirectory=/srv/nfsu/app
+RuntimeDirectory=nfsu
+# Secrets come from root-owned, 0600/0640 files loaded as credentials; nothing sits in the repo or unit file.
+LoadCredential=django_secret_key:/etc/nfsu/secrets/django_secret_key
+LoadCredential=audit_hmac_key:/etc/nfsu/secrets/audit_hmac_key
+LoadCredential=db_password:/etc/nfsu/secrets/db_password
+Environment=NFSU_ENV=production
+Environment=DJANGO_SECRET_KEY_FILE=%d/django_secret_key
+Environment=AUDIT_HMAC_KEY_FILE=%d/audit_hmac_key
+Environment=DB_PASSWORD_FILE=%d/db_password
+Environment=AUDIT_LOG_PATH=/var/log/nfsu/audit/audit.jsonl
+ExecStart=/srv/nfsu/venv/bin/gunicorn -c deploy/gunicorn.conf.py config.wsgi:application
+Restart=on-failure
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictSUIDSGID=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+ReadWritePaths=/var/log/nfsu /srv/nfsu/media
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target
