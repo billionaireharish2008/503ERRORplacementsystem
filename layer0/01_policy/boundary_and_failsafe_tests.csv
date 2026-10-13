@@ -1,0 +1,12 @@
+test_id,rule_id,scenario,input,expected_decision_now,expected_after_policy_approval,note
+BT-01,PKG-02,CTC exactly at lower boundary,fte_ctc_annual=10.00,REVIEW,TBD,Do not guess inclusive/exclusive
+BT-02,PKG-03,CTC exactly at upper boundary,fte_ctc_annual=16.00,REVIEW,TBD,Do not guess inclusive/exclusive
+BT-03,PKG-02,Just below 10 LPA,fte_ctc_annual=9.99,TBD,TBD,Fill once bands are known
+BT-04,PKG-02,Just above 10 LPA,fte_ctc_annual=10.01,TBD,TBD,Fill once bands are known
+BT-05,PKG-03,Just below 16 LPA,fte_ctc_annual=15.99,TBD,TBD,Fill once bands are known
+BT-06,PKG-03,Just above 16 LPA,fte_ctc_annual=16.01,TBD,TBD,Fill once bands are known
+FS-01,SYS-01,Missing CTC on a new offer,fte_ctc_annual=<empty>,REVIEW,REVIEW,Never assume ALLOW
+FS-02,SYS-01,Policy version missing or invalid,policy_version=<none>,REVIEW,REVIEW,Never assume ALLOW
+FS-03,SYS-01,Two rules contradict for same input,"rule A=ALLOW, rule B=BLOCK",REVIEW,REVIEW,Refer to human authority
+FS-04,SYS-01,Student record not found / archived,student_id=<unknown>,REVIEW,REVIEW,"Safe error, no stack trace"
+EX-T1,ATT-02,"Absence claimed as emergency, no approval recorded",exception_request.status=pending,REVIEW,REVIEW,Engine flags; human approves
