@@ -1,0 +1,8 @@
+# Human-edited list of direct dependencies. Compile with exact versions AND hashes, then review the diff:
+#   pip install pip-tools
+#   pip-compile --generate-hashes --output-file requirements.txt requirements.in
+# Update on a schedule: pip-compile --upgrade, read changelogs, run tests + `python -m ops.dep_check`.
+Django
+cryptography
+gunicorn
+psycopg[binary]
