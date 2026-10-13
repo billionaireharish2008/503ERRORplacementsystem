@@ -1,0 +1,5 @@
+{
+  "python.testing.unittestEnabled": true,
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestArgs": ["-v", "-s", "./policy_engine/tests", "-t", ".", "-p", "test_*.py"]
+}
