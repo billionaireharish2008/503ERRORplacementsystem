@@ -1,0 +1,21 @@
+name: security
+on:
+  pull_request:
+  push: { branches: [main] }
+  schedule: [{ cron: "0 3 * * 1" }]      # weekly: new CVEs appear without code changes
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }          # full history for the secret scan
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install --require-hashes -r requirements.txt pip-audit bandit
+      - run: python -m unittest discover -v
+      - run: python -m ops.secret_scan
+      - run: python -m ops.secret_scan --history
+      - run: python -m ops.dep_check --strict --require-hashes
+      - run: python -m ops.drill --report-dir drill_reports
+      - uses: actions/upload-artifact@v4
+        with: { name: restore-drill, path: drill_reports/ }
