@@ -1,0 +1,9 @@
+action_or_data,administrator,placement_officer,course_coordinator,recruiter
+Manage user accounts and roles,Yes,No / delegated only,No,No
+View all programme records,Yes,Only as assigned,No,No
+View assigned programme records,Yes,Yes if assigned,Yes,No by default
+View own company's drive candidates,If needed,Yes,If assigned,"Yes, limited fields"
+Change student placement status / CTC,Controlled admin permission; audited,Only approved workflow,No by default,No
+Enter drive participation / attendance,Yes,Yes,As assigned,Only assigned drive actions
+Approve policy exception,Only if explicitly authorized,Only if explicitly authorized,Only if explicitly authorized,No
+Export contact / compensation data,Explicit permission + audit,Explicit permission + audit,Restricted,Minimum necessary only
