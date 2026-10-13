@@ -1,0 +1,13 @@
+threat_id,asset,abuse_case,impact,risk,control,test,owner,layer,status
+T-01,Student identity/contact data,User changes a record ID in URL/API to read another student,Privacy breach,High,Object-level authorization on every request; programme/company scope,Negative access tests per role,TBD,2,OPEN
+T-02,Placement status and package,Student forges request to alter own status or CTC,"Integrity loss, fraud",High,No student write on protected fields; server validation; audit,Forged-request test returns denied + audit entry,TBD,"2,3",OPEN
+T-03,Recruitment eligibility,Client bypasses disabled button or replays stale eligibility result,Policy bypass,High,Re-run policy check at commit inside a transaction,Modified-request and stale-decision tests,TBD,"3,4",OPEN
+T-04,Concurrent offers,Two requests create contradictory offers/status,Inconsistent records,High,Transactions + constraints/locking,Concurrency test,TBD,3,OPEN
+T-05,Login/session,"Password guessing, stolen/reused session",Account takeover,High,"Throttling, framework password hashing, secure cookies, expiry, MFA for privileged where feasible",Brute-force test; cookie inspection; logout test,TBD,2,OPEN
+T-06,Import/export,"Malformed file, spreadsheet formula injection, unauthorised download","Data leak, client-side code execution",High,"Type/size allow-list, parse as data, formula-safe CSV, per-request authorization, export audit",Malicious CSV test; formula-cell export test,TBD,"3,6",OPEN
+T-07,Audit records,Operator edits/deletes audit history; secrets in logs,Loss of accountability,Medium,"Append-only access, restricted log access, no secrets in logs",Edit/delete attempt fails; secret-in-log test,TBD,5,OPEN
+T-08,Policy rules,Rules edited by ordinary user or supplied as executable input,Policy tampering,High,"Rules in code module, versioned, not user-editable",Permission test; version reproducibility test,TBD,4,OPEN
+T-09,Dependencies/config,"Vulnerable package, exposed secret, debug mode on",Remote compromise,Medium,"Pinned deps, scans, env-based secrets, deployment checklist",Dependency + secret scan report,TBD,5,OPEN
+T-10,Availability/mistakes,Bulk import or repeated requests overload app; backup not restorable,Downtime/data loss,Medium,"Limits, timeouts, tested backups","Oversize-file, throttle and restore tests",TBD,5,OPEN
+T-11,Privileged accounts,Shared admin account or access not removed after role change,Untraceable actions,Medium,Individual accounts; periodic review,Access review checklist,TBD,"2,5",OPEN
+T-12,Dashboards/reports,Drill-down or filter leaks out-of-scope data,Privacy breach,Medium,Same backend permissions as record views; scope filters,Scope tests with multi-role synthetic data,TBD,6,OPEN
