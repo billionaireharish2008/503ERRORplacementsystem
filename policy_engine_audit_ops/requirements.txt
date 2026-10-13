@@ -1,0 +1,5 @@
+# NOT YET PINNED. The CI gate (python -m ops.dep_check) fails until this is generated:
+#   pip-compile --generate-hashes --output-file requirements.txt requirements.in
+# Commit the generated file. The engine, tests and run_demo.py themselves need only the standard library;
+# audit_ops/ops need `cryptography` (backups) and Django (models/services/signals).
+Django
